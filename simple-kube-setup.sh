@@ -9,8 +9,7 @@ curl -sLS https://dl.get-arkade.dev | sudo sh
 # Install krew, helm
 arkade get helm
 arkade get krew
-sudo mv /home/administrator/.arkade/bin/krew /usr/local/bin/
-sudo mv /home/administrator/.arkade/bin/helm /usr/local/bin/
+export PATH=$PATH:$HOME/.arkade/bin/
 
 kubectl apply -f ./
 # To uninstall k3s
