@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prod-deploy-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/limit-connections: "2500"
+    nginx.ingress.kubernetes.io/limit-rps: "500"
+    # nginx.ingress.kubernetes.io/whitelist-source-range: "64.94.43.129,99.183.238.207,206.223.162.86,24.171.0.0/16,206.223.162.86,144.121.160.18,10.0.0.0/8,98.32.253.81"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+spec:
+  tls:
+    - hosts:
+        - sample.app
+      secretName: sampleapp-tls
+  rules:
+    - host: sample.app
+      http:
+        paths:
+          - backend:
+              service:
+                name: my-nginx-svc
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+              
