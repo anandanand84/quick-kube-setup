@@ -17,3 +17,6 @@ kubectl wait --for=condition=ready pod -l app=webhook -n cert-manager
 kubectl apply -f ./
 # To uninstall k3s
 # /usr/local/bin/k3s-uninstall.sh
+
+# To Integrate the cluster with gitlab follow the steps at
+# https://betterprogramming.pub/using-a-k3s-kubernetes-cluster-for-your-gitlab-project-b0b035c291a9
