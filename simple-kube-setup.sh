@@ -20,3 +20,5 @@ kubectl apply -f ./
 
 # To Integrate the cluster with gitlab follow the steps at
 # https://betterprogramming.pub/using-a-k3s-kubernetes-cluster-for-your-gitlab-project-b0b035c291a9
+# kubectl create secret docker-registry regcred --docker-server=registry.gitlab.com --docker-username=<username> --docker-password=<password> -n prod
+# kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "regcred"}]}'
